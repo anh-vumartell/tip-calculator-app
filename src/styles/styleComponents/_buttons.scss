@@ -1,0 +1,22 @@
+//BUTTONS
+.btn-reset {
+  background-color: $primary;
+  text-transform: uppercase;
+  width: 100%;
+  border: none;
+  font-size: $font-md;
+  color: $very-dark;
+  font-weight: 900;
+  margin-top: 1rem;
+  transition: 0.4s all linear;
+}
+.btn-reset:hover {
+  background-color: $light-grayish__first;
+}
+.btn-percent {
+  transition: 0.4s all linear;
+}
+.btn-percent:hover {
+  background-color: $primary;
+  color: $very-dark;
+}
