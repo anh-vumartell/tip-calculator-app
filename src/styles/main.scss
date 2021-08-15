@@ -62,6 +62,11 @@ p {
   color: $dark-grayish__second;
 }
 
+a {
+  color: $very-dark;
+  text-decoration: none;
+}
+
 .numbers {
   font-size: $font-lg;
 }
@@ -93,4 +98,37 @@ p {
   flex-direction: row;
   justify-content: space-between;
   padding: 0.5rem 0;
+}
+
+.contributor {
+  padding: 1rem 5rem;
+}
+
+@media screen and (min-width: 950px) {
+  .app-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    padding: 2.5rem 2rem 2rem 2rem;
+    max-width: 900px;
+  }
+  .buttons-container {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  .input-container {
+    max-height: 390px;
+  }
+  .percent {
+    top: 73px;
+  }
+  .btn-reset {
+    margin-top: 150px;
+  }
+  .result {
+    font-size: $font-lg + 12;
+  }
+  .contributor {
+    position: fixed;
+    bottom: 2rem;
+  }
 }

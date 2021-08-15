@@ -63,36 +63,38 @@ function App() {
       </div>
 
       <div className="app-content">
-        <InputControl
-          label="Bill"
-          imgSrc={dollar}
-          type="text"
-          value={billInput}
-          onAddInfo={updateBill}
-        />
+        <div className="input-container">
+          <InputControl
+            label="Bill"
+            imgSrc={dollar}
+            type="text"
+            value={billInput}
+            onAddInfo={updateBill}
+          />
 
-        <div>
-          <label>Select Tip %</label>
-          <div className="buttons-container">
-            {renderBtns}
-            <input
-              type="text"
-              placeholder="Custom"
-              value={selectedPercent}
-              onChange={updatePercentage}
-            />
-            <span className="percent">%</span>
+          <div>
+            <label>Select Tip %</label>
+            <div className="buttons-container">
+              {renderBtns}
+              <input
+                type="text"
+                placeholder="Custom"
+                value={selectedPercent}
+                onChange={updatePercentage}
+              />
+              <span className="percent">%</span>
+            </div>
           </div>
-        </div>
 
-        <InputControl
-          label="Number of People"
-          imgSrc={personIcon}
-          type="number"
-          value={personNumInput}
-          onAddInfo={updatePersonNum}
-          min={1}
-        />
+          <InputControl
+            label="Number of People"
+            imgSrc={personIcon}
+            type="number"
+            value={personNumInput}
+            onAddInfo={updatePersonNum}
+            min={1}
+          />
+        </div>
 
         <div className="result-container">
           <TipResult header="Tip Amount" result={tipAmountPer} />
@@ -103,6 +105,14 @@ function App() {
             Reset
           </button>
         </div>
+      </div>
+      <div className="contributor">
+        <p>
+          Challenge by{" "}
+          <a href="https://www.frontendmentor.io/solutions">FrontendMentor</a>.
+          Coded by{" "}
+          <a href="https://anh-vumartell.netlify.app/">Ngoc Anh Vu-Martell</a>
+        </p>
       </div>
     </div>
   );
