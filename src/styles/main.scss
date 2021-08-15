@@ -33,12 +33,20 @@ input {
   font-family: inherit;
   font-weight: 700;
   color: $very-dark;
-  padding-right: 1.2rem;
+  padding-right: 1.6rem;
 }
 span {
   position: absolute;
+}
+.logo {
   top: 45px;
   left: 22px;
+}
+.percent {
+  right: 10px;
+  top: 140px;
+  font-size: $font-lg;
+  color: $dark-grayish__first;
 }
 button {
   height: 50px;
@@ -80,7 +88,7 @@ p {
   position: relative;
 }
 
-.result-tip {
+.tip-result {
   display: flex;
   flex-direction: row;
   justify-content: space-between;

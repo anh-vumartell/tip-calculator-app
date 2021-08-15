@@ -3,6 +3,8 @@ import logo from "./images/logo.svg";
 import dollar from "./images/icon-dollar.svg";
 import personIcon from "./images/icon-person.svg";
 import "./styles/main.scss";
+import InputControl from "./components/InputControl";
+import TipResult from "./components/TipResult";
 
 function App() {
   const percentages = [5, 10, 15, 25, 50];
@@ -46,6 +48,14 @@ function App() {
       {unit}%
     </button>
   ));
+
+  //Function to reset the state of the app
+  const resetAllInputs = () => {
+    setBillInput(0);
+    setInputPercent(0);
+    setPersonNumInput(1);
+    setSelectedPercent(0);
+  };
   return (
     <div className="app-container">
       <div className="app-header">
@@ -53,14 +63,15 @@ function App() {
       </div>
 
       <div className="app-content">
-        <div className="input-control">
-          <label>Bill</label>
-          <span>
-            <img src={dollar} alt="" />
-          </span>
-          <input type="text" value={billInput} onChange={updateBill} />
-        </div>
-        <div clasName="tip-input">
+        <InputControl
+          label="Bill"
+          imgSrc={dollar}
+          type="text"
+          value={billInput}
+          onAddInfo={updateBill}
+        />
+
+        <div>
           <label>Select Tip %</label>
           <div className="buttons-container">
             {renderBtns}
@@ -70,42 +81,27 @@ function App() {
               value={selectedPercent}
               onChange={updatePercentage}
             />
+            <span className="percent">%</span>
           </div>
         </div>
 
-        <div className="input-control">
-          <label>Number of People</label>
-          <span>
-            <img src={personIcon} alt="" />
-          </span>
-          <input
-            type="number"
-            min={1}
-            value={personNumInput}
-            onChange={updatePersonNum}
-          />
-        </div>
+        <InputControl
+          label="Number of People"
+          imgSrc={personIcon}
+          type="number"
+          value={personNumInput}
+          onAddInfo={updatePersonNum}
+          min={1}
+        />
 
         <div className="result-container">
-          <div className="result-tip">
-            <div className="result-header">
-              <h4>Tip Amount</h4>
-              <p>/ person</p>
-            </div>
-            <div className="numbers result">
-              ${!tipAmountPer ? 0 : tipAmountPer.toFixed(2)}
-            </div>
-          </div>
-          <div className="result-tip">
-            <div className="result-header">
-              <h4>Total</h4>
-              <p>/ person</p>
-            </div>
-            <div className="numbers result">
-              ${!totalPer ? 0 : totalPer.toFixed(2)}
-            </div>
-          </div>
-          <button className="btn-reset">Reset</button>
+          <TipResult header="Tip Amount" result={tipAmountPer} />
+
+          <TipResult header="Total" result={totalPer} />
+
+          <button type="button" className="btn-reset" onClick={resetAllInputs}>
+            Reset
+          </button>
         </div>
       </div>
     </div>
