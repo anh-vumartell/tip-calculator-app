@@ -16,8 +16,6 @@ This is a solution to the [Tip calculator app challenge on Frontend Mentor](http
 - [Author](#author)
 - [Acknowledgments](#acknowledgments)
 
-**Note: Delete this note and update the table of contents based on what sections you keep.**
-
 ## Overview
 
 ### The challenge
@@ -96,8 +94,6 @@ const updateBill = (e) => {
 - Seperate the app logic and app UI
 - Reorganise Sass files
 
-Use this section to outline areas that you want to continue focusing on in future projects. These could be concepts you're still not completely comfortable with or techniques you found useful that you want to refine and perfect.
-
 ### Useful resources
 
 - [Sass Crash Course - Traversy Media](https://www.youtube.com/watch?v=nu5mdN2JIwM&t=1415s) - This helped me understand how to use Sass in my project. I really like how the instructor explains the basic concepts and style rules. The example project is simple enough to understand. I'd really recommend this tutorial for anyone who is starting out with Sass.
@@ -105,7 +101,6 @@ Use this section to outline areas that you want to continue focusing on in futur
 - [React useState Hook in Action: What You Need to Know](https://blog.alexdevero.com/react-usestate-hook-in-action/) - This is an amazing article which helped me finally understand React useState Hook. I'd recommend it to anyone still learning this concept.
 
 - [Styled Components] (https://styled-components.com/docs/basics#motivation) - A detail documentation on styled components.
-  **Note: Delete this note and replace the list above with resources that helped you during the challenge. These could come in handy for anyone viewing your solution or for yourself when you look back on this project in the future.**
 
 ## Author
 
@@ -113,4 +108,3 @@ Use this section to outline areas that you want to continue focusing on in futur
 - Frontend Mentor - [@anh-vumartell](https://www.frontendmentor.io/profile/anh-vumartell)
 - Twitter - [@VuMartell](https://twitter.com/VuMartell)
 
-## Acknowledgments
