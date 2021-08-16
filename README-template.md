@@ -27,86 +27,90 @@ Users should be able to:
 - View the optimal layout for the app depending on their device's screen size
 - See hover states for all interactive elements on the page
 - Calculate the correct tip and total cost of the bill per person
+- Reset all input fields when needed
 
 ### Screenshot
 
-![](./screenshot.jpg)
-
-Add a screenshot of your solution. The easiest way to do this is to use Firefox to view your project, right-click the page and select "Take a Screenshot". You can choose either a full-height screenshot or a cropped one based on how long the page is. If it's very long, it might be best to crop it.
-
-Alternatively, you can use a tool like [FireShot](https://getfireshot.com/) to take the screenshot. FireShot has a free option, so you don't need to purchase it. 
-
-Then crop/optimize/edit your image however you like, add it to your project, and update the file path in the image above.
-
-**Note: Delete this note and the paragraphs above when you add your screenshot. If you prefer not to add a screenshot, feel free to remove this entire section.**
+![On desktop](./src/images/tip-calculator-desktop.png)
+![On mobile](./src/images/tip-calculator-mobile.png)
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [Code base](https://github.com/anh-vumartell/tip-calculator-app)
+- Live Site URL: [Handy Tip Calculator](https://handy-tip-calculator.netlify.app/)
 
 ## My process
 
 ### Built with
 
-- Semantic HTML5 markup
-- CSS custom properties
-- Flexbox
 - CSS Grid
 - Mobile-first workflow
 - [React](https://reactjs.org/) - JS library
-- [Next.js](https://nextjs.org/) - React framework
-- [Styled Components](https://styled-components.com/) - For styles
-
-**Note: These are just examples. Delete this note and replace the list above with your own choices**
+- CSS Preprocessor: Sass
 
 ### What I learned
 
-Use this section to recap over some of your major learnings while working through this project. Writing these out and providing code samples of areas you want to highlight is a great way to reinforce your own knowledge.
+- I learned create a new React Project from setting up the development environment to deploying it to the web.
+- I learned how to set up Sass folder tree.
+- I used drawn layout (on paper) to visualise the position of each element.
 
-To see how you can add code snippets, see below:
+- I learned how to use React Hook useState() to manage the state of user's inputs inside the application
+
+```js
+const [billInput, setBillInput] = useState(0);
+const [personNumInput, setPersonNumInput] = useState(1);
+const [selectedPercent, setSelectedPercent] = useState();
+const [inputPercent, setInputPercent] = useState("");
+
+//Function to update selected percentage
+const updatePercentage = (e) => {
+  e.persist();
+  setInputPercent(e.target.value);
+
+  setSelectedPercent(e.target.value);
+};
+//FUnction to update bill
+const updateBill = (e) => {
+  setBillInput(e.target.value);
+};
+```
+
+- Create custom component to render tip results
 
 ```html
-<h1>Some HTML code I'm proud of</h1>
-```
-```css
-.proud-of-this-css {
-  color: papayawhip;
-}
-```
-```js
-const proudOfThisFunc = () => {
-  console.log('🎉')
-}
-```
+<div className="result-container">
+  <TipResult header="Tip Amount" result="{tipAmountPer}" />
 
-If you want more help with writing markdown, we'd recommend checking out [The Markdown Guide](https://www.markdownguide.org/) to learn more.
+  <TipResult header="Total" result="{totalPer}" />
 
-**Note: Delete this note and the content within this section and replace with your own learnings.**
+  <button type="button" className="btn-reset" onClick="{resetAllInputs}">
+    Reset
+  </button>
+</div>
+```
 
 ### Continued development
 
-Use this section to outline areas that you want to continue focusing on in future projects. These could be concepts you're still not completely comfortable with or techniques you found useful that you want to refine and perfect.
+- Validate input field.
+- Use styled components
+- Seperate the app logic and app UI
+- Reorganise Sass files
 
-**Note: Delete this note and the content within this section and replace with your own plans for continued development.**
+Use this section to outline areas that you want to continue focusing on in future projects. These could be concepts you're still not completely comfortable with or techniques you found useful that you want to refine and perfect.
 
 ### Useful resources
 
-- [Example resource 1](https://www.example.com) - This helped me for XYZ reason. I really liked this pattern and will use it going forward.
-- [Example resource 2](https://www.example.com) - This is an amazing article which helped me finally understand XYZ. I'd recommend it to anyone still learning this concept.
+- [Sass Crash Course - Traversy Media](https://www.youtube.com/watch?v=nu5mdN2JIwM&t=1415s) - This helped me understand how to use Sass in my project. I really like how the instructor explains the basic concepts and style rules. The example project is simple enough to understand. I'd really recommend this tutorial for anyone who is starting out with Sass.
 
-**Note: Delete this note and replace the list above with resources that helped you during the challenge. These could come in handy for anyone viewing your solution or for yourself when you look back on this project in the future.**
+- [React useState Hook in Action: What You Need to Know](https://blog.alexdevero.com/react-usestate-hook-in-action/) - This is an amazing article which helped me finally understand React useState Hook. I'd recommend it to anyone still learning this concept.
+
+- [Styled Components] (https://styled-components.com/docs/basics#motivation) - A detail documentation on styled components.
+  **Note: Delete this note and replace the list above with resources that helped you during the challenge. These could come in handy for anyone viewing your solution or for yourself when you look back on this project in the future.**
 
 ## Author
 
-- Website - [Add your name here](https://www.your-site.com)
-- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/yourusername)
-- Twitter - [@yourusername](https://www.twitter.com/yourusername)
-
-**Note: Delete this note and add/remove/edit lines above based on what links you'd like to share.**
+- Website - [Ngoc Anh Vu-Martell](https://anh-vumartell.netlify.app/)
+- Frontend Mentor - [@anh-vumartell](https://www.frontendmentor.io/profile/anh-vumartell)
+- Twitter - [@VuMartell](https://twitter.com/VuMartell)
 
 ## Acknowledgments
-
-This is where you can give a hat tip to anyone who helped you out on this project. Perhaps you worked in a team or got some inspiration from someone else's solution. This is the perfect place to give them some credit.
-
-**Note: Delete this note and edit this section's content as necessary. If you completed this challenge by yourself, feel free to delete this section entirely.**

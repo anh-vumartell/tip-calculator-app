@@ -28,6 +28,13 @@ function App() {
   //Function to update number of persons
   const updatePersonNum = (e) => {
     setPersonNumInput(e.target.value);
+    if (+e.target.value === 0) {
+      return (
+        <div>
+          <p>Cannot be zero</p>
+        </div>
+      );
+    }
   };
 
   const tipAmountPer = (+billInput * +selectedPercent) / 100 / +personNumInput;
@@ -68,6 +75,7 @@ function App() {
             label="Bill"
             imgSrc={dollar}
             type="text"
+            required
             value={billInput}
             onAddInfo={updateBill}
           />
@@ -92,7 +100,8 @@ function App() {
             type="number"
             value={personNumInput}
             onAddInfo={updatePersonNum}
-            min={1}
+            required
+            min="1"
           />
         </div>
 
