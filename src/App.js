@@ -5,6 +5,8 @@ import personIcon from "./images/icon-person.svg";
 import "./styles/main.scss";
 import InputControl from "./components/InputControl";
 import TipResult from "./components/TipResult";
+import Header from "./components/Header";
+import Button from "./components/Button";
 
 function App() {
   const percentages = [5, 10, 15, 25, 50];
@@ -65,9 +67,7 @@ function App() {
   };
   return (
     <div className="app-container">
-      <div className="app-header">
-        <img src={logo} className="App-logo" alt="logo" />
-      </div>
+      <Header />
 
       <div className="app-content">
         <div className="input-container">
@@ -110,9 +110,9 @@ function App() {
 
           <TipResult header="Total" result={totalPer} />
 
-          <button type="button" className="btn-reset" onClick={resetAllInputs}>
+          <Button type="button" onClick={resetAllInputs}>
             Reset
-          </button>
+          </Button>
         </div>
       </div>
       <div className="contributor">
