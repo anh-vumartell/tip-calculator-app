@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import logo from "./images/logo.svg";
 import dollar from "./images/icon-dollar.svg";
 import personIcon from "./images/icon-person.svg";
 import "./styles/main.scss";
@@ -10,36 +9,40 @@ import Button from "./components/Button";
 
 function App() {
   const percentages = [5, 10, 15, 25, 50];
-  const [billInput, setBillInput] = useState(0);
-  const [personNumInput, setPersonNumInput] = useState(1);
-  const [selectedPercent, setSelectedPercent] = useState();
+  const [billInput, setBillInput] = useState("");
+  const [personNumInput, setPersonNumInput] = useState("");
+  const [isValid, setIsValid] = useState(true);
+  // const [selectedPercent, setSelectedPercent] = useState();
   const [inputPercent, setInputPercent] = useState("");
 
   const updatePercentage = (e) => {
     e.persist();
     setInputPercent(e.target.value);
     console.log(inputPercent);
-    setSelectedPercent(e.target.value);
-    console.log(selectedPercent);
+    // setSelectedPercent(e.target.value);
+    // console.log(selectedPercent);
   };
   //FUnction to update bill
   const updateBill = (e) => {
-    setBillInput(e.target.value);
+    if (+e.target.value <= 0) {
+      setIsValid(false);
+    } else {
+      setBillInput(e.target.value);
+      setIsValid(true);
+    }
   };
 
   //Function to update number of persons
   const updatePersonNum = (e) => {
-    setPersonNumInput(e.target.value);
-    if (+e.target.value === 0) {
-      return (
-        <div>
-          <p>Cannot be zero</p>
-        </div>
-      );
+    if (+e.target.value <= 0) {
+      setIsValid(false);
+    } else {
+      setPersonNumInput(e.target.value);
+      setIsValid(true);
     }
   };
 
-  const tipAmountPer = (+billInput * +selectedPercent) / 100 / +personNumInput;
+  const tipAmountPer = (+billInput * +inputPercent) / 100 / +personNumInput;
   const totalPer =
     +billInput !== 0 && +personNumInput !== 0
       ? +billInput / +personNumInput + tipAmountPer
@@ -60,10 +63,9 @@ function App() {
 
   //Function to reset the state of the app
   const resetAllInputs = () => {
-    setBillInput(0);
-    setInputPercent(0);
-    setPersonNumInput(1);
-    setSelectedPercent(0);
+    setBillInput("");
+    setInputPercent("");
+    setPersonNumInput("");
   };
   return (
     <div className="app-container">
@@ -72,6 +74,7 @@ function App() {
       <div className="app-content">
         <div className="input-container">
           <InputControl
+            isValid={isValid}
             label="Bill"
             imgSrc={dollar}
             type="text"
@@ -80,14 +83,14 @@ function App() {
             onAddInfo={updateBill}
           />
 
-          <div>
+          <div className="input-percent">
             <label>Select Tip %</label>
             <div className="buttons-container">
               {renderBtns}
               <input
                 type="text"
                 placeholder="Custom"
-                value={selectedPercent}
+                value={inputPercent}
                 onChange={updatePercentage}
               />
               <span className="percent">%</span>
@@ -95,13 +98,13 @@ function App() {
           </div>
 
           <InputControl
+            isValid={isValid}
             label="Number of People"
             imgSrc={personIcon}
-            type="number"
+            type="text"
             value={personNumInput}
             onAddInfo={updatePersonNum}
             required
-            min="1"
           />
         </div>
 

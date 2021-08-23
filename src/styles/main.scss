@@ -21,7 +21,7 @@ label {
 h4 {
   color: $white;
 }
-input {
+.input-control input {
   border: none;
   background-color: $light-grayish__second;
   outline: none;
@@ -35,6 +35,19 @@ input {
   color: $very-dark;
   padding-right: 1.6rem;
 }
+
+.input-percent input {
+  background-color: $light-grayish__second;
+  border: none;
+  font-size: $font-lg;
+  font-family: inherit;
+  font-weight: 700;
+  text-align: right;
+  width: 100%;
+  padding-right: 1.6rem;
+  outline: none;
+}
+
 span {
   position: absolute;
 }
@@ -72,7 +85,15 @@ a {
 }
 .result {
   color: $primary;
-  font-size: $font-lg + 6;
+  font-size: $font-lg + 20;
+}
+.error-msg {
+  position: relative;
+}
+.error-msg span {
+  right: 15px;
+  bottom: 7px;
+  color: red;
 }
 
 .app-header {

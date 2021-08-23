@@ -8,7 +8,7 @@ const TipResult = (props) => {
         <p>/ person</p>
       </div>
       <div className="numbers result">
-        ${!props.result ? 0 : props.result.toFixed(2)}
+        ${!props.result ? (0.0).toFixed(2) : props.result.toFixed(2)}
       </div>
     </div>
   );

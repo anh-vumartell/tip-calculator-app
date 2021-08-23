@@ -1,4 +1,50 @@
 @import url("https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap");
+.btn-reset {
+  background-color: #26c0ab;
+  text-transform: uppercase;
+  width: 100%;
+  border: none;
+  font-size: 18px;
+  color: #00494d;
+  font-weight: 900;
+  margin-top: 1rem;
+  transition: 0.4s all linear;
+}
+
+.btn-reset:hover {
+  background-color: #c5e4e7;
+}
+
+.btn-percent {
+  transition: 0.4s all linear;
+}
+
+.btn-percent:hover {
+  background-color: #26c0ab;
+  color: #00494d;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.buttons-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin: 1.5rem 0 2rem 0;
+  position: relative;
+}
+
+.result-container {
+  background-color: #00494d;
+  border-radius: 10px;
+  padding: 2.5rem 1.6rem 1.6rem 1.6rem;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -20,23 +66,47 @@ h4 {
   color: white;
 }
 
-input {
+.input-control input {
   border: none;
   background-color: #f4fafa;
   outline: none;
   height: 50px;
+  width: 100%;
   border-radius: 5px;
   text-align: right;
   font-size: 24px;
   font-family: inherit;
   font-weight: 700;
   color: #00494d;
+  padding-right: 1.6rem;
+}
+
+.input-percent input {
+  background-color: #f4fafa;
+  border: none;
+  font-size: 24px;
+  font-family: inherit;
+  font-weight: 700;
+  text-align: right;
+  width: 100%;
+  padding-right: 1.6rem;
+  outline: none;
 }
 
 span {
   position: absolute;
+}
+
+.logo {
   top: 45px;
-  left: 15px;
+  left: 22px;
+}
+
+.percent {
+  right: 10px;
+  top: 140px;
+  font-size: 24px;
+  color: #5e7a7d;
 }
 
 button {
@@ -47,6 +117,16 @@ button {
   font-weight: 700;
   color: white;
   background-color: #00494d;
+  cursor: pointer;
+}
+
+p {
+  color: #7f9c9f;
+}
+
+a {
+  color: #00494d;
+  text-decoration: none;
 }
 
 .numbers {
@@ -55,13 +135,17 @@ button {
 
 .result {
   color: #26c0ab;
+  font-size: 44px;
 }
 
-.app-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+.error-msg {
+  position: relative;
+}
+
+.error-msg span {
+  right: 15px;
+  bottom: 7px;
+  color: red;
 }
 
 .app-header {
@@ -84,15 +168,43 @@ button {
   position: relative;
 }
 
-.buttons-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-  margin: 1.5rem 0 2rem 0;
+.tip-result {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0.5rem 0;
 }
 
-.result-container {
-  background-color: #00494d;
-  border-radius: 10px;
+.contributor {
+  padding: 1rem 5rem;
+}
+
+@media screen and (min-width: 950px) {
+  .app-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    padding: 2.5rem 2rem 2rem 2rem;
+    max-width: 900px;
+  }
+  .buttons-container {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  .input-container {
+    max-height: 390px;
+  }
+  .percent {
+    top: 73px;
+  }
+  .btn-reset {
+    margin-top: 150px;
+  }
+  .result {
+    font-size: 36px;
+  }
+  .contributor {
+    position: fixed;
+    bottom: 2rem;
+  }
 }
 /*# sourceMappingURL=main.css.map */
