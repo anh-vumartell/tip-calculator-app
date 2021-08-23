@@ -60,6 +60,25 @@ const [personNumInput, setPersonNumInput] = useState(1);
 const [selectedPercent, setSelectedPercent] = useState();
 const [inputPercent, setInputPercent] = useState("");
 
+//FUnction to update bill
+const updateBill = (e) => {
+  if (+e.target.value <= 0) {
+    setIsValid(false);
+  } else {
+    setBillInput(e.target.value);
+    setIsValid(true);
+  }
+};
+
+//Function to update number of persons
+const updatePersonNum = (e) => {
+  if (+e.target.value <= 0) {
+    setIsValid(false);
+  } else {
+    setPersonNumInput(e.target.value);
+    setIsValid(true);
+  }
+};
 //Function to update selected percentage
 const updatePercentage = (e) => {
   e.persist();
@@ -67,10 +86,17 @@ const updatePercentage = (e) => {
 
   setSelectedPercent(e.target.value);
 };
-//FUnction to update bill
-const updateBill = (e) => {
-  setBillInput(e.target.value);
-};
+```
+
+-Conditionally render an error message based on the state of input.
+
+```js
+const InputControl = (props) => {
+  return (
+    <div className="input-control">
+      <label>{props.label}</label>
+      {!props.isValid && <ErrorMsg />}
+  ..........
 ```
 
 - Create custom component to render tip results
@@ -89,7 +115,6 @@ const updateBill = (e) => {
 
 ### Continued development
 
-- Validate input field.
 - Use styled components
 - Seperate the app logic and app UI
 - Reorganise Sass files
@@ -107,4 +132,3 @@ const updateBill = (e) => {
 - Website - [Ngoc Anh Vu-Martell](https://anh-vumartell.netlify.app/)
 - Frontend Mentor - [@anh-vumartell](https://www.frontendmentor.io/profile/anh-vumartell)
 - Twitter - [@VuMartell](https://twitter.com/VuMartell)
-

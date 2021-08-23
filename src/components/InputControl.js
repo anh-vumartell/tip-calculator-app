@@ -3,9 +3,9 @@ import "../styles/main.scss";
 import ErrorMsg from "./ErrorMsg";
 const InputControl = (props) => {
   return (
-    <div className={`input-control ${!props.isValid ? "invalid" : ""}`}>
+    <div className="input-control">
       <label>{props.label}</label>
-      {!props.isValid ? <ErrorMsg /> : ""}
+      {!props.isValid && <ErrorMsg />}
       <span className="logo">
         <img src={props.imgSrc} alt="" />
       </span>
