@@ -7,9 +7,7 @@ const TipResult = (props) => {
         <h4>{props.header}</h4>
         <p>/ person</p>
       </div>
-      <div className="numbers result">
-        ${!props.result ? (0.0).toFixed(2) : props.result.toFixed(2)}
-      </div>
+      <div className="numbers result">${props.result()}</div>
     </div>
   );
 };

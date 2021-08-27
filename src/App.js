@@ -9,25 +9,30 @@ import Button from "./components/Button";
 
 function App() {
   const percentages = [5, 10, 15, 25, 50];
-  const [billInput, setBillInput] = useState("");
-  const [personNumInput, setPersonNumInput] = useState("");
+  const [bill, setBill] = useState("");
+  const [people, setPeople] = useState("");
   const [isValid, setIsValid] = useState(true);
-  // const [selectedPercent, setSelectedPercent] = useState();
-  const [inputPercent, setInputPercent] = useState("");
+  const [selectedPercent, setSelectedPercent] = useState();
+  const [customPercent, setCustomPercent] = useState("");
+  const [isSelected, setIsSelected] = useState(true);
 
-  const updatePercentage = (e) => {
+  const updateCustomPercentage = (e) => {
     e.persist();
-    setInputPercent(e.target.value);
-    console.log(inputPercent);
-    // setSelectedPercent(e.target.value);
-    // console.log(selectedPercent);
+    setCustomPercent(+e.target.value);
+
+    console.log(customPercent);
+  };
+  const updateSelectedPercentage = (e) => {
+    setSelectedPercent(+e.target.value);
+    setIsSelected(isSelected);
+    console.log(isSelected);
   };
   //FUnction to update bill
   const updateBill = (e) => {
     if (+e.target.value <= 0) {
       setIsValid(false);
     } else {
-      setBillInput(e.target.value);
+      setBill(e.target.value);
       setIsValid(true);
     }
   };
@@ -37,25 +42,50 @@ function App() {
     if (+e.target.value <= 0) {
       setIsValid(false);
     } else {
-      setPersonNumInput(e.target.value);
+      setPeople(+e.target.value);
       setIsValid(true);
     }
   };
 
-  const tipAmountPer = (+billInput * +inputPercent) / 100 / +personNumInput;
-  const totalPer =
-    +billInput !== 0 && +personNumInput !== 0
-      ? +billInput / +personNumInput + tipAmountPer
-      : 0;
+  const tipCalcHandler = () => {
+    //if clause guard inputs
+    if (
+      isNaN(bill) ||
+      isNaN(people) ||
+      !isFinite(bill / people) ||
+      bill / people === 0 ||
+      isNaN(customPercent)
+    ) {
+      return (0.0).toFixed(2);
+    }
+    if (!customPercent) {
+      return (bill * selectedPercent) / 100 / people;
+    } else {
+      return (bill * customPercent) / 100 / people;
+    }
+  };
+  const totalCalcHandler = () => {
+    if (
+      isNaN(bill) ||
+      isNaN(people) ||
+      !isFinite(bill / people) ||
+      bill / people === 0 ||
+      isNaN(customPercent)
+    ) {
+      return (0.0).toFixed(2);
+    }
+    return (bill / people + parseFloat(tipCalcHandler())).toFixed(2);
+  };
 
   //Function to render list of buttons
   const renderBtns = percentages.map((unit, i) => (
     <button
       type="button"
       key={i + 1}
-      className="btn-percent numbers"
       value={unit}
-      onClick={updatePercentage}
+      isselected={isSelected.toString()}
+      className={`btn-percent ${isSelected ? "is-selected" : ""} numbers`}
+      onClick={updateSelectedPercentage}
     >
       {unit}%
     </button>
@@ -63,9 +93,9 @@ function App() {
 
   //Function to reset the state of the app
   const resetAllInputs = () => {
-    setBillInput("");
-    setInputPercent("");
-    setPersonNumInput("");
+    setBill("");
+    setCustomPercent("");
+    setPeople("");
   };
   return (
     <div className="app-container">
@@ -79,7 +109,7 @@ function App() {
             imgSrc={dollar}
             type="text"
             required
-            value={billInput}
+            value={bill}
             onAddInfo={updateBill}
           />
 
@@ -90,8 +120,8 @@ function App() {
               <input
                 type="text"
                 placeholder="Custom"
-                value={inputPercent}
-                onChange={updatePercentage}
+                value={customPercent}
+                onChange={updateCustomPercentage}
               />
               <span className="percent">%</span>
             </div>
@@ -102,16 +132,16 @@ function App() {
             label="Number of People"
             imgSrc={personIcon}
             type="text"
-            value={personNumInput}
+            value={people}
             onAddInfo={updatePersonNum}
             required
           />
         </div>
 
         <div className="result-container">
-          <TipResult header="Tip Amount" result={tipAmountPer} />
+          <TipResult header="Tip Amount" result={tipCalcHandler} />
 
-          <TipResult header="Total" result={totalPer} />
+          <TipResult header="Total" result={totalCalcHandler} />
 
           <Button type="button" onClick={resetAllInputs}>
             Reset

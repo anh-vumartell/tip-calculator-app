@@ -22,8 +22,8 @@ h4 {
   color: $white;
 }
 .input-control input {
-  border: none;
   background-color: $light-grayish__second;
+  border: none;
   outline: none;
   height: 50px;
   width: 100%;
@@ -34,6 +34,15 @@ h4 {
   font-weight: 700;
   color: $very-dark;
   padding-right: 1.6rem;
+}
+.input-control {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2rem;
+  position: relative;
+}
+.input-control.invalid input {
+  border: 2px solid hsl(24, 57%, 58%);
 }
 
 .input-percent input {
@@ -87,13 +96,15 @@ a {
   color: $primary;
   font-size: $font-lg + 20;
 }
+
 .error-msg {
   position: relative;
 }
 .error-msg span {
   right: 15px;
   bottom: 7px;
-  color: red;
+  color: hsl(24, 57%, 58%);
+  font-size: $font-lg/2;
 }
 
 .app-header {
@@ -106,12 +117,6 @@ a {
   background-color: $white;
   border-radius: 20px;
   padding: 3rem 2rem;
-}
-.input-control {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 2rem;
-  position: relative;
 }
 
 .tip-result {

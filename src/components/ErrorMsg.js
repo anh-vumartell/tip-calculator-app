@@ -2,7 +2,7 @@ import React from "react";
 const ErrorMsg = () => {
   return (
     <div className="error-msg">
-      <span>Invalid input!</span>
+      <span>Can't be zero!</span>
     </div>
   );
 };

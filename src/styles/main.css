@@ -24,6 +24,10 @@
   color: #00494d;
 }
 
+.btn-percent.is-selected:focus {
+  background-color: #26c0ab;
+}
+
 .app-container {
   display: flex;
   flex-direction: column;
@@ -67,8 +71,8 @@ h4 {
 }
 
 .input-control input {
-  border: none;
   background-color: #f4fafa;
+  border: none;
   outline: none;
   height: 50px;
   width: 100%;
@@ -79,6 +83,17 @@ h4 {
   font-weight: 700;
   color: #00494d;
   padding-right: 1.6rem;
+}
+
+.input-control {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.input-control.invalid input {
+  border: 2px solid #d18857;
 }
 
 .input-percent input {
@@ -145,7 +160,8 @@ a {
 .error-msg span {
   right: 15px;
   bottom: 7px;
-  color: red;
+  color: #d18857;
+  font-size: 12px;
 }
 
 .app-header {
@@ -159,13 +175,6 @@ a {
   background-color: white;
   border-radius: 20px;
   padding: 3rem 2rem;
-}
-
-.input-control {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 2rem;
-  position: relative;
 }
 
 .tip-result {
